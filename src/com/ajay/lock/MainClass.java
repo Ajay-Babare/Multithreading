@@ -4,7 +4,7 @@ public class MainClass {
 
 	public static void main(String[] args) {
 		
-		HDFCBank ajayAccount = new HDFCBank(7000);
+		HDFCBank ajayAccount = new HDFCBank(5000);
 		
 		AtmThread t1 = new AtmThread(ajayAccount);
 		t1.setName("AtmThread");
@@ -13,8 +13,7 @@ public class MainClass {
 		
 		t1.start();
 		t2.start();
-		
-/**		
+			
 		HDFCBank akshayAccount = new HDFCBank(10000);
 		
 		NetBankingThread t3 = new NetBankingThread(akshayAccount);
@@ -24,7 +23,6 @@ public class MainClass {
 				
 		t3.start();
 		t4.start();
-**/
 	}
 
 }
