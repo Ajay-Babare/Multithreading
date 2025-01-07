@@ -7,6 +7,12 @@ import java.util.concurrent.Executors;
 
 public class ThreadPoolExample {
 
+	// Java 1.5 -> Executor Framework
+	// Single Thread Pool
+	// Cached Thread Pool
+	// Scheduled Thread Pool 
+	// Fixed Thread Pool
+	
 	public static void main(String[] args) {
 		Customer c1 = new Customer("Sachin","PL01",1000.00);
 		Customer c2 = new Customer("Virat","PL02",2000.00);
@@ -27,13 +33,18 @@ public class ThreadPoolExample {
 		list.add(c7);
 		list.add(c8);
 		
-		ExecutorService pool = Executors.newFixedThreadPool(3);
+//		ExecutorService pool = Executors.newSingleThreadExecutor()
+//		ExecutorService pool = Executors.newScheduledThreadPool(2)
+//		ExecutorService pool = Executors.newFixedThreadPool(3);
+		ExecutorService pool = Executors.newCachedThreadPool();
+		
 		
 		for(int i=0; i<list.size();i++) {
 			TriggerEmail obj = new TriggerEmail(list.get(i));
 			pool.execute(obj); //start()
-		
 		}
+		
+		pool.shutdown();// stop accepting new task
 	}
 
 }
