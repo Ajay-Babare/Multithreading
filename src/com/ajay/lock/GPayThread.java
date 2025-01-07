@@ -9,6 +9,10 @@ public class GPayThread extends Thread{
 	}
 	@Override
 	public void run() {
-		hdfc.withdraw(3000);
+		try {
+			hdfc.withdraw(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }

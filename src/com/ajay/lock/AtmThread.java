@@ -10,6 +10,10 @@ public class AtmThread extends Thread{
 	
 	@Override
 	public void run() {
-		hdfc.withdraw(2000);
+		try {
+			hdfc.withdraw(10000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 	}
 }
