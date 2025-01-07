@@ -2,8 +2,13 @@ package com.ajay.threadpool;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 public class ThreadPoolExample {
 
@@ -33,15 +38,40 @@ public class ThreadPoolExample {
 		list.add(c7);
 		list.add(c8);
 		
-//		ExecutorService pool = Executors.newSingleThreadExecutor()
-//		ExecutorService pool = Executors.newScheduledThreadPool(2)
-//		ExecutorService pool = Executors.newFixedThreadPool(3);
-		ExecutorService pool = Executors.newCachedThreadPool();
 		
+		
+//		ExecutorService pool = Executors.newSingleThreadExecutor();
+//		ExecutorService pool = Executors.newFixedThreadPool(3);
+//		ExecutorService pool = Executors.newCachedThreadPool();
+		ScheduledExecutorService pool = Executors.newScheduledThreadPool(2);
+		
+//		List<Future<Object>> l = new ArrayList<>();
+		List<ScheduledFuture<Object>> l = new ArrayList<>();
 		
 		for(int i=0; i<list.size();i++) {
 			TriggerEmail obj = new TriggerEmail(list.get(i));
-			pool.execute(obj); //start()
+//			pool.execute(obj); //start()
+//			Future<Object> future = pool.submit(obj); //submit(Callable)
+//			l.add(future);
+			
+//			pool.scheduleAtFixedRate(null, i, i, null); // Callable
+//			pool.scheduleWithFixedDelay(null, i, i, null); // Callable
+			
+			ScheduledFuture<Object> scheduledFuture = pool.schedule(obj,2, TimeUnit.SECONDS);
+			l.add(scheduledFuture);
+//			System.out.println(scheduledFuture);
+		}
+		
+		for(int i=0; i<l.size();i++) {
+			ScheduledFuture<Object> ob = l.get(i);
+//			ob.get();
+			if(l.get(i).isDone()) {
+				try {
+					System.out.println(l.get(i).get());
+				} catch (InterruptedException | ExecutionException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		
 		pool.shutdown();// stop accepting new task
