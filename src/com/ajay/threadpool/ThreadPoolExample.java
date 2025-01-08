@@ -64,7 +64,7 @@ public class ThreadPoolExample {
 		
 		for(int i=0; i<l.size();i++) {
 			ScheduledFuture<Object> ob = l.get(i);
-//			ob.get();
+//			ob.get(); // might be blocking so first check isDone()
 			if(l.get(i).isDone()) {
 				try {
 					System.out.println(l.get(i).get());

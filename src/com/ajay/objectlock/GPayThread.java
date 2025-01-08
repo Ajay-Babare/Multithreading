@@ -1,4 +1,4 @@
-package com.ajay.lock;
+package com.ajay.objectlock;
 
 public class GPayThread extends Thread{
 	
