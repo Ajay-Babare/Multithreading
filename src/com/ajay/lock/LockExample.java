@@ -5,7 +5,8 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LockExample {
 	
-	private Lock l = new ReentrantLock();
+	private Lock l = new ReentrantLock(true);// fair lock
+	// false or no-args constructor that is called unfair lock
 	
 	public void display(LockExample d) {
 		// create lock and unlock across method possible
