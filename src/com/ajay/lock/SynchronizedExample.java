@@ -3,6 +3,7 @@ package com.ajay.lock;
 public class SynchronizedExample {
 
 	synchronized public void display(SynchronizedExample d) {
+		// create lock in unlock across method not possible using synchronized keyword
 		//create lock
 		display1(d);
 		System.out.println("Hi 1");
