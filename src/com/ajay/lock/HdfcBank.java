@@ -21,7 +21,8 @@ public class HdfcBank {
 		t5.start();
 	}
 	
-	double balance = 0;
+	// volatile keyword makes sure that if one thread changes a variable, other threads see the updated value
+	volatile double balance = 0;
 	
 	ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 	
