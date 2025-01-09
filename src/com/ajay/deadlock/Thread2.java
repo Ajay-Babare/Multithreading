@@ -18,7 +18,7 @@ public class Thread2 extends Thread {
 		synchronized(obj2){
 			System.out.println("Thread2 acquired lock on obj2");
 			try {
-				Thread.sleep(100000);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
