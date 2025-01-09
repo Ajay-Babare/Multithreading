@@ -11,7 +11,10 @@ public class LockExample {
 	public void display(LockExample d) {
 		// create lock and unlock across method possible
 		//create lock
-		l.lock(); //
+		l.lock();
+//		if(l.tryLock()) { //tryLock checks if a lock is free. if yes, it locks and returns true, else returns false.
+//			stmt...
+//		}
 		display1(d);
 		System.out.println("Hi 1");
 		System.out.println("Hi 2");
