@@ -20,9 +20,11 @@ public class HdfcBank {
 		t4.start();
 		t5.start();
 	}
-	
+	// transient vs volatile
 	// volatile keyword makes sure that if one thread changes a variable, other threads see the updated value
 	volatile double balance = 0;
+	
+	//transient keyword in Java is used to mark a variable that should not be serialized, meaning its value won't be saved when the object is written to a file or sent over a network.
 	
 	ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
 	
