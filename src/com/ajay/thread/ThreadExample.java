@@ -17,7 +17,7 @@ public class ThreadExample extends Thread{
 		ThreadExample t1 = new ThreadExample();//new
 		t1.setName("abc");
 		ThreadExample t2 = new ThreadExample("ThreadName");
-		t1.start(); // It create independent path of execution
+		t1.start(); // It create independent path of execution we can check by keeping break points in run method
 		t2.start(); // runnable
 //		t2.start();// after call run method we can't reuse the thread IllegalThreadStateException
 	}
